@@ -10,9 +10,9 @@ app.use(express.json());
 
 // --- IMPORT DATA ---
 try {
-  const loveLetter = require('../server/data/loveLetter.json');
-  const memories = require('../server/data/memories.json');
-  const playlist = require('../server/data/playlist.json');
+  const loveLetter = require('./data/loveLetter.json');
+  const memories = require('./data/memories.json');
+  const playlist = require('./data/playlist.json');
 
   // --- API ENDPOINTS ---
   app.get('/api/love-letter', (req, res) => {
