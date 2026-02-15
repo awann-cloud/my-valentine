@@ -2,10 +2,10 @@
   "name": "valentine-project",
   "version": "1.0.0",
   "description": "Project Valentine",
-  "main": "server/index.js", 
+  "main": "api/index.js",     
   "scripts": {
-    "start": "node server/index.js", 
-    "dev": "node server/index.js"
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
