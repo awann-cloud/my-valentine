@@ -1,4 +1,9 @@
-const { useEffect, useState } = React;
+const { useState } = React;
+
+// ✅ DATA LANGSUNG DIDEFINISIKAN (TIDAK PERLU FETCH DARI SERVER!)
+const letterData = {"to":"Nindiaa Sayanggkuu","from":"Calonn Suami kamu","headline":"Happy Valentine's Day :3","body":["Setiap hari sama kamu selalu berasa spesial, tapi hari ini aku mau bikin sesuatu yang benar-benar cuma buat kita berdua.","Mungkin website kecil ini nggak sebanding sama semua kebaikann yang kamu kasih ke aku, tapi di setiap kata di sini ada rasa sayang yang nggak bisa aku jelasin satu-satu.","Makasih sayangg udahh selalu ada dann support aku sampai sekarang, aku mauu selamanya sama kamu... Aku sayang kamu bangetttt, semoga kita bisa terus bareng-bareng sampai tua nanti, aamiin."],"closing":"I love you, today and every day. 💌"};
+const memoriesData = [{"title":"Ulang Tahun Kamu","date":"17/08/2025","description":"Iyaa hari ituu spesiall banget buat aku, karenaa akuu bisaa ngerayain ulang tahun kamu untuk pertama kalinyaa.","imageUrl":"/images/CIMG1147.jpg"},{"title":"Ini kita udah dekett","date":"Suatu hari saat kuliahh","description":"kamuu ingett kann waktuu ituu kitaa nyarii tempat yangg enakk buatt ngobrol berduaa, alhasill kitaa dapet di dalem ruangg bacaa, mooment inii buktinyaa.","imageUrl":"/images/WIN_20250212_13_12_16_Pro.jpg"}];
+const playlistData = [{"title":"kota ini tak sama tanpamu","artist":"Nadhif Basalamah","url":"https://www.youtube.com/watch?v=grp6FCnioMM","youtubeId":"grp6FCnioMM"},{"title":"Spontan","artist":"DÉABDIL dan Arseri Music","url":"https://www.youtube.com/watch?v=n0sxFjzZLIw","youtubeId":"n0sxFjzZLIw"},{"title":"Marsha endeber","artist":"песенки для детей","url":"https://www.youtube.com/watch?v=zDfCtociDtA","youtubeId":"zDfCtociDtA"}];
 
 function IntroScreen({ onOpen }) {
   const [hearts, setHearts] = useState([]);
@@ -62,54 +67,17 @@ function IntroScreen({ onOpen }) {
 }
 
 function App() {
-  const [letter, setLetter] = useState(null);
-  const [memories, setMemories] = useState([]);
-  const [playlist, setPlaylist] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // ✅ STATE LANGSUNG DIISI DENGAN DATA (Tidak ada loading!)
+  const [letter] = useState(letterData);
+  const [memories] = useState(memoriesData);
+  const [playlist] = useState(playlistData);
   const [showIntro, setShowIntro] = useState(true);
-
-  // --- TAMBAHAN BARU: STATE UNTUK PLAYLIST ---
-  // Ini remote control kita. Isinya nomor urut lagu yang lagi main.
   const [playingIndex, setPlayingIndex] = useState(null);
 
-  useEffect(() => {
-    async function loadAll() {
-      try {
-        const [letterRes, memoriesRes, playlistRes] = await Promise.all([
-          fetch('/api/love-letter'),
-          fetch('/api/memories'),
-          fetch('/api/playlist'),
-        ]);
-
-        const [letterJson, memoriesJson, playlistJson] = await Promise.all([
-          letterRes.json(),
-          memoriesRes.json(),
-          playlistRes.json(),
-        ]);
-
-        setLetter(letterJson);
-        setMemories(memoriesJson);
-        setPlaylist(playlistJson);
-      } catch (e) {
-        console.error('Failed to load Valentine data', e);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadAll();
-  }, []);
+  // ✅ TIDAK PERLU useEffect! Data ready dari awal.
 
   if (showIntro) {
     return <IntroScreen onOpen={() => setShowIntro(false)} />;
-  }
-
-  if (loading) {
-    return (
-      <div className="page page--loading">
-        <p>Menyiapkan kejutan buat kamu...</p>
-      </div>
-    );
   }
 
   return (
