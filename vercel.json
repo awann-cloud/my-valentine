@@ -12,12 +12,12 @@
       "dest": "api/index.js"
     },
     {
-      "src": "/images/(.*)",
-      "dest": "client/public/images/$1"
+      "src": "/(.+\\.(js|jsx|css|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf))$",
+      "dest": "public/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "public/$1"
+      "dest": "public/index.html"
     }
   ]
 }
