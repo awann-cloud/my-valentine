@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rewrites": [
+    { 
+      "source": "/api/(.*)", 
+      "destination": "/server/index.js" 
+    },
+    { 
+      "source": "/images/(.*)", 
+      "destination": "/client/public/images/$1" 
+    },
+    { 
+      "source": "/(.*)", 
+      "destination": "/client/$1" 
+    }
+  ]
+}
