@@ -8,28 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/client/public/images/$1"
-    },
-    {
-      "src": "/style\\.css$",
-      "dest": "/client/style.css"
-    },
-    {
-      "src": "/app\\.jsx$",
-      "dest": "/client/app.jsx"
-    },
-    {
-      "src": "/(.*\\.(?:js|jsx|css|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)?)$",
-      "dest": "/client/$1"
-    },
-    {
-      "src": "/(.*)(?<!\\.(js|jsx|css|json|png|jpg|jpeg|gif|svg|ico))$",
-      "dest": "/client/index.html"
+      "src": "/(.*)",
+      "dest": "api/index.js"
     }
   ]
 }
