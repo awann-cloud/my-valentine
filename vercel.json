@@ -4,10 +4,6 @@
     {
       "src": "api/index.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "client/**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -20,15 +16,19 @@
       "dest": "/client/public/images/$1"
     },
     {
-      "src": "/(.*\\.(?:css|js|json|png|jpg|jpeg|gif|svg|ico))",
+      "src": "/style\\.css$",
+      "dest": "/client/style.css"
+    },
+    {
+      "src": "/app\\.jsx$",
+      "dest": "/client/app.jsx"
+    },
+    {
+      "src": "/(.*\\.(?:js|jsx|css|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)?)$",
       "dest": "/client/$1"
     },
     {
-      "src": "/(.*)html",
-      "dest": "/client/$1.html"
-    },
-    {
-      "src": "/(.*)",
+      "src": "/(.*)(?<!\\.(js|jsx|css|json|png|jpg|jpeg|gif|svg|ico))$",
       "dest": "/client/index.html"
     }
   ]
